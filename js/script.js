@@ -2,6 +2,7 @@ const input = document.getElementById("input");
 const button = document.getElementById("button");
 const returnBtn = document.createElement("button");
 const answer = document.getElementById("answers");
+// while (input.value.length== 0) {
 
   button.addEventListener("click", ask);
 
@@ -29,43 +30,39 @@ const answer = document.getElementById("answers");
       "images/magic8ball_19.png",
       "images/magic8ball_20.png",
     ];
-    // selecting random index from imgArray
-    function getRandomImage() {
-      const randomImgIndex = Math.floor(Math.random() * imgArray.length);
+if (input.value.length != 0) {
+  // selecting random index from imgArray
+  const randomImgIndex = Math.floor(Math.random() * imgArray.length);
 
-      return randomImgIndex;
-    }
-    getRandomImage();
-    // Create image tag to insert random image
-    const img = document.createElement("img");
-    img.src = imgArray[getRandomImage()];
-    // append selected random image into html
-    
-    answer.appendChild(img);
-    // hide input field and ask button
-    const content = document.getElementById("content");
-    content.style.display = "none";
-    // get the value of input
+  // Create image tag to insert random image
+  const img = document.createElement("img");
+  // img.src = imgArray[getRandomImage()];
+  img.src = imgArray[randomImgIndex];
+  // append selected random image into html
 
-    console.log(input.value);
+  answer.appendChild(img);
+  // hide input field and ask button
+  const content = document.getElementById("content");
+  content.style.display = "none";
 
-    // create h2 element and append to html to display users question after user clicked ask button
-    const askedQuestion = document.createElement("h2");
+  // create h2 element and append to html to display users question after user clicked ask button
+  const askedQuestion = document.createElement("p");
 
-    answer.prepend(askedQuestion);
-    askedQuestion.innerHTML = input.value;
-    // create return button to return ask another
-    
-    returnBtn.setAttribute("id", "returnBtn");
-    returnBtn.innerText = "Do you want to ask another question?";
-    returnBtn.style.textAlign = "center";
-    answer.appendChild(returnBtn);
-    
-       
+  answer.prepend(askedQuestion);
+  askedQuestion.innerText = input.value;
+  // // create return button to ask another
+
+  returnBtn.setAttribute("id", "returnBtn");
+  returnBtn.innerText = "Do you want to ask another question?";
+  returnBtn.style.textAlign = "center";
+  answer.appendChild(returnBtn);
+} else {
+  alert("Enter a question")
 }
   returnBtn.addEventListener("click", function returnToAsk() {
     content.style.display = "block";
-    answer.style.display = "none";
+    input.value = "";
+    // answer.style.display = "none";
+    answer.innerHTML = "";
   });
-// }
-  
+}

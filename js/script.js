@@ -53,11 +53,11 @@ if (input.value.length != 0) {
   // // create return button to ask another
 
   returnBtn.setAttribute("id", "returnBtn");
-  returnBtn.innerText = "Do you want to ask another question?";
+  returnBtn.innerText = "More Fun?";
   returnBtn.style.textAlign = "center";
   answer.appendChild(returnBtn);
 } else {
-  alert("Enter a question")
+  alert("Enter a question.")
 }
   returnBtn.addEventListener("click", function returnToAsk() {
     content.style.display = "block";
